@@ -14,8 +14,6 @@ function header_div(){
 }
 
 function language_div(){
-    const titletext = document.getElementById("siteNameHeaderTitleID")
-
     const language_div = document.createElement("div");
     language_div.id = "languageDivID";
     body.appendChild(language_div);
@@ -30,11 +28,7 @@ function language_div(){
     english_radio.name = "language";
     english_radio.value = "English";
     english_radio.checked = true;
-    english_radio.onclick = function() { 
-        chooseLanguage('English');
-        titletext.textContent = "Lafras Maths"
-
-    };
+    english_radio.onclick = function() { chooseLanguage('English')};
     english_label.appendChild(english_radio);
     english_label.appendChild(document.createTextNode("English"));
 
@@ -44,10 +38,7 @@ function language_div(){
     afrikaans_radio.name = "language";
     afrikaans_radio.value = "Afrikaans";
     afrikaans_radio.checked = false;
-    afrikaans_radio.onclick = function() { 
-        chooseLanguage('Afrikaans');
-        titletext.textContent = "Lafras Wiskunde"
-    };
+    afrikaans_radio.onclick = function() { chooseLanguage('Afrikaans')};
     afrikaans_label.appendChild(afrikaans_radio)
     afrikaans_label.appendChild(document.createTextNode("Afrikaans"))
 
@@ -56,38 +47,79 @@ function language_div(){
 }
 
 function chooseLanguage(language){
+    const titletext = document.getElementById("siteNameHeaderTitleID");
+    const mainPageEnglish = document.getElementById("mainEnglishDivID");
+    const mainPageAfrikaans = document.getElementById("mainAfrikaansDivID");
     const radios =document.querySelectorAll('input[name="language"]');
     radios.forEach(radio => {
         if (radio.value !== language) {
             radio.checked = false;
         }
     });
+    if (language == "Afrikaans"){
+        // Title
+        titletext.textContent = "Lafras Wiskunde"
+
+        // Main Page Visibility
+        mainPageAfrikaans.style = "display: block"
+        mainPageEnglish.style = "display: none"
+
+    }
+    else if (language == "English"){
+        // Title
+        titletext.textContent = "Lafras Maths"
+
+        // Main Page visibility
+        mainPageAfrikaans.style = "display: none"
+        mainPageEnglish.style = "display: block"
+    };
+
 }
 
-function main_page_div(){
+function main_page_english_div(){
     const main_div = document.createElement("div");
-    main_div.id = "mainDivID";
+    main_div.id = "mainEnglishDivID";
+    main_div.style = "display: block;";
     body.appendChild(main_div);
 
     const gr8_link = document.createElement("a");
-    gr8_link.id = "gr8LinkID";
-    gr8_link.textContent ="Grade/Graad 8";
+    gr8_link.id = "grade8LinkID";
+    gr8_link.textContent ="Grade 8";
     main_div.appendChild(gr8_link);
 
     const br1 = document.createElement("br")
     main_div.appendChild(br1)
 
     const gr10_link = document.createElement("a");
-    gr10_link.id = "gr10LinkID";
-    gr10_link.textContent ="Grade/Graad 10";
+    gr10_link.id = "grade10LinkID";
+    gr10_link.textContent ="Grade 10";
     main_div.appendChild(gr10_link);
 }
+
+function main_page_afrikaans_div(){
+    const main_div = document.createElement("div");
+    main_div.id = "mainAfrikaansDivID";
+    main_div.style = "display: none;";
+    body.appendChild(main_div);
+
+    const gr8_link = document.createElement("a");
+    gr8_link.id = "graad8LinkID";
+    gr8_link.textContent ="Graad 8";
+    main_div.appendChild(gr8_link);
+
+    const br1 = document.createElement("br")
+    main_div.appendChild(br1)
+
+    const gr10_link = document.createElement("a");
+    gr10_link.id = "graad10LinkID";
+    gr10_link.textContent ="Graad 10";
+    main_div.appendChild(gr10_link);}
 
 function main(){
     header_div();
     language_div();
-    main_page_div();
+    main_page_english_div();
+    main_page_afrikaans_div();
 }
 
-main();
-
+main()
