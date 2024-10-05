@@ -44,6 +44,9 @@ function language_div(){
 
     language_form.appendChild(english_label);
     language_form.appendChild(afrikaans_label);
+
+    const br = document.createElement("br");
+    language_div.appendChild(br)
 }
 
 function chooseLanguage(language){
