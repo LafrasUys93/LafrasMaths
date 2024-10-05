@@ -29,7 +29,10 @@ let files = {   "Afrikaans" : {
                                                         "Gr 8 Verhoudings ratios 8.1.3.pdf",
                                                         "Gr 8.1.1 Telgetalle Whole numbers (1) (1).pdf",
                                                         "Gr 8Algebra (2) 8.3.2.pdf",
-                                                        "Note 14 Aug 2023.pdf"]
+                                                        "Note 14 Aug 2023.pdf"],
+                                        "Werkkaarte" : ["Gr 8 - Kwartaal 1&2 Wiskunde.pdf",
+                                                        "Gr 8 - Kwartaal 3 - Wiskunde.pdf",
+                                                        "Gr 8 - Kwartaal 4 - Wiskunde hersiening.pdf"]
                                                     }
                                                 },
                 "English" : {
@@ -59,7 +62,10 @@ let files = {   "Afrikaans" : {
                                                         "Gr 8 Verhoudings ratios 8.1.3.pdf",
                                                         "Gr 8.1.1 Telgetalle Whole numbers (1) (1).pdf",
                                                         "Gr 8Algebra (2) 8.3.2.pdf",
-                                                        "Note 14 Aug 2023.pdf"]
+                                                        "Note 14 Aug 2023.pdf"],
+                                        "Worksheets" : ["Gr 8 - Kwartaal 4 - Wiskunde hersiening.pdf",
+                                                        "Grade 8 - Mathmatics.pdf"
+                                        ]
                                             }
                                 }
                 };
@@ -238,6 +244,10 @@ function grade_8_div(){
     const worksheets = document.createElement("a");
     worksheets.id = "grade8WorksheetsID";
     worksheets.textContent = "Worksheets";
+    worksheets.onclick = function() {
+        grade_8_div.style = "display: none";
+        document.getElementById("grade8WorksheetsDivID").style = "display: block";
+    }
     grade_8_div.appendChild(worksheets);
 
     const br2 = document.createElement("br")
@@ -303,6 +313,36 @@ function grade_8_summaries_div(){
         const a = document.createElement("a")
         a.textContent = files["English"]["Grade8"]["Summaries"][i]
         a.href = "English/Grade8/Summaries/" + files["English"]["Grade8"]["Summaries"][i]
+        div.appendChild(a)
+    }
+    const br = document.createElement("br");
+    div.appendChild(br)
+    const br2 = document.createElement("br");
+    div.appendChild(br2)
+
+    const back = document.createElement("a")
+    back.textContent = "Back"
+    back.onclick = function() {
+        div.style = "display: none"
+        document.getElementById("grade8DivID").style = "display: block"
+    }
+    div.appendChild(back)
+    body.appendChild(div)
+}
+
+// Grade 8 Worksheets
+function grade_8_worksheets_div(){
+    const div = document.createElement("div")
+    div.id = "grade8WorksheetsDivID"
+    div.style = "display: none"
+    for (let i = 0; i < files["English"]["Grade8"]["Worksheets"].length; i++){
+        if (i > 0){
+            const br = document.createElement("br")
+            div.appendChild(br)
+        }
+        const a = document.createElement("a")
+        a.textContent = files["English"]["Grade8"]["Worksheets"][i]
+        a.href = "English/Grade8/Worksheets/" + files["English"]["Grade8"]["Worksheets"][i]
         div.appendChild(a)
     }
     const br = document.createElement("br");
@@ -388,44 +428,58 @@ function grade_10_div(){
     body.appendChild(grade_10_div)
 }
 
+
+
+///////////////
+// Afrikaans //
+///////////////
+
 function graad_8_div(){
-    const mainpage = document.getElementById("mainEnglishDivID")
+    const mainpage = document.getElementById("mainAfrikaansDivID")
     const language = document.getElementById("languageDivID")
     const graad_8_div = document.createElement("div");
     graad_8_div.id = "graad8DivID";
     graad_8_div.style = "display: none";
 
-    // Lesson Plans
+    // Les Planne
     const lesson_plans = document.createElement("a");
-    lesson_plans.id = "graad8LessonPlansID";
-    lesson_plans.textContent = "Lesson Plans";
+    lesson_plans.id = "graad8LesPlanneID";
+    lesson_plans.textContent = "Les Planne";
     graad_8_div.appendChild(lesson_plans);
 
     const br1 = document.createElement("br")
     graad_8_div.appendChild(br1)
 
-    // Worksheets
-    const worksheets = document.createElement("a");
-    worksheets.id = "graad8WorksheetsID";
-    worksheets.textContent = "Worksheets";
-    graad_8_div.appendChild(worksheets);
+    // Werkkaarte
+    const werkkaarte = document.createElement("a");
+    werkkaarte.id = "werkKaarteID";
+    werkkaarte.textContent = "Werkkaarte";
+    werkkaarte.onclick = function() {
+        graad_8_div.style = "display: none";
+        document.getElementById("graad8WerkkaarteDivID").style = "display: block";
+    }
+    graad_8_div.appendChild(werkkaarte);
 
     const br2 = document.createElement("br")
     graad_8_div.appendChild(br2);
 
-    // Summaries
+    // Opsommings
     const summaries = document.createElement("a");
-    summaries.id = "graad8SummariesID";
-    summaries.textContent = "Summaries";
+    summaries.id = "graad8OpsommingsID";
+    summaries.textContent = "Opsommings";
+    summaries.onclick = function(){
+        graad_8_div.style = "display: none";
+        document.getElementById("graad8OpsommingsDivID").style = "display: block";
+    }
     graad_8_div.append(summaries);
 
     const br3 = document.createElement("br")
     graad_8_div.appendChild(br3);
 
-    // Test Papers
+    // Toetse
     const test_papers = document.createElement("a");
-    test_papers.id = "graad8TestPapersID";
-    test_papers.textContent = "Test Papers";
+    test_papers.id = "graad8ToetseID";
+    test_papers.textContent = "Toetse";
     graad_8_div.appendChild(test_papers);
 
     const br4 = document.createElement("br");
@@ -442,10 +496,10 @@ function graad_8_div(){
     const br6 = document.createElement("br");
     graad_8_div.appendChild(br6);
 
-    // Back Button
+    // Terug Button
     const back = document.createElement("a");
-    back.id = "graad8BackID";
-    back.textContent = "Back";
+    back.id = "graad8TerugID";
+    back.textContent = "Terug";
     back.onclick = function(){
         graad_8_div.style = "display: none";
         language.style = "display: block";
@@ -456,6 +510,66 @@ function graad_8_div(){
     body.appendChild(graad_8_div)
 }
 
+// Graad 8 Opsommings
+function graad_8_opsommings_div(){
+    const div = document.createElement("div")
+    div.id = "graad8OpsommingsDivID"
+    div.style = "display: none"
+    for (let i = 0; i < files["Afrikaans"]["Graad8"]["Opsommings"].length; i++){
+        if (i > 0){
+            const br = document.createElement("br")
+            div.appendChild(br)
+        }
+        const a = document.createElement("a")
+        a.textContent = files["Afrikaans"]["Graad8"]["Opsommings"][i]
+        a.href = "Afrikaans/Graad8/Opsommings/" + files["Afrikaans"]["Graad8"]["Opsommings"][i]
+        div.appendChild(a)
+    }
+    const br = document.createElement("br");
+    div.appendChild(br)
+    const br2 = document.createElement("br");
+    div.appendChild(br2)
+
+    const back = document.createElement("a")
+    back.textContent = "Terug"
+    back.onclick = function() {
+        div.style = "display: none"
+        document.getElementById("graad8DivID").style = "display: block"
+    }
+    div.appendChild(back)
+    body.appendChild(div)
+}
+
+// Graad 8 Werkkaarte
+function graad_8_werkkaarte_div(){
+    const div = document.createElement("div")
+    div.id = "graad8WerkkaarteDivID"
+    div.style = "display: none"
+    for (let i = 0; i < files["Afrikaans"]["Graad8"]["Werkkaarte"].length; i++){
+        if (i > 0){
+            const br = document.createElement("br")
+            div.appendChild(br)
+        }
+        const a = document.createElement("a")
+        a.textContent = files["Afrikaans"]["Graad8"]["Werkkaarte"][i]
+        a.href = "Afrikaans/Graad8/Opsommings/" + files["Afrikaans"]["Graad8"]["Werkkaarte"][i]
+        div.appendChild(a)
+    }
+    const br = document.createElement("br");
+    div.appendChild(br)
+    const br2 = document.createElement("br");
+    div.appendChild(br2)
+
+    const back = document.createElement("a")
+    back.textContent = "Terug"
+    back.onclick = function() {
+        div.style = "display: none"
+        document.getElementById("graad8DivID").style = "display: block"
+    }
+    div.appendChild(back)
+    body.appendChild(div)
+}
+
 function graad_10_div(){
     const mainpage = document.getElementById("mainEnglishDivID")
     const language = document.getElementById("languageDivID")
@@ -463,37 +577,37 @@ function graad_10_div(){
     graad_10_div.id = "graad10DivID";
     graad_10_div.style = "display: none";
 
-    // Lesson Plans
+    // Les Planne
     const lesson_plans = document.createElement("a");
     lesson_plans.id = "graad10LessonPlansID";
-    lesson_plans.textContent = "Lesson Plans";
+    lesson_plans.textContent = "Les Planne";
     graad_10_div.appendChild(lesson_plans);
 
     const br1 = document.createElement("br")
     graad_10_div.appendChild(br1)
 
-    // Worksheets
+    // Werkkaarte
     const worksheets = document.createElement("a");
     worksheets.id = "graad8WorksheetsID";
-    worksheets.textContent = "Worksheets";
+    worksheets.textContent = "Werkkaarte";
     graad_10_div.appendChild(worksheets);
 
     const br2 = document.createElement("br")
     graad_10_div.appendChild(br2);
 
-    // Summaries
+    // Opsommings
     const summaries = document.createElement("a");
     summaries.id = "graad10SummariesID";
-    summaries.textContent = "Summaries";
+    summaries.textContent = "Opsommings";
     graad_10_div.append(summaries);
 
     const br3 = document.createElement("br")
     graad_10_div.appendChild(br3);
 
-    // Test Papers
+    // Toetse
     const test_papers = document.createElement("a");
     test_papers.id = "graad10TestPapersID";
-    test_papers.textContent = "Test Papers";
+    test_papers.textContent = "Toetse";
     graad_10_div.appendChild(test_papers);
 
     const br4 = document.createElement("br");
@@ -510,10 +624,10 @@ function graad_10_div(){
     const br6 = document.createElement("br");
     graad_10_div.appendChild(br6);
 
-    // Back Button
+    // Terug Button
     const back = document.createElement("a");
     back.id = "graad10BackID";
-    back.textContent = "Back";
+    back.textContent = "Terug";
     back.onclick = function(){
         graad_10_div.style = "display: none";
         language.style = "display: block";
@@ -524,10 +638,6 @@ function graad_10_div(){
     body.appendChild(graad_10_div)
 }
 
-///////////////
-// Afrikaans //
-///////////////
-
 function main(){
     header_div();
     language_div();
@@ -536,8 +646,11 @@ function main(){
 
     grade_8_div();
     grade_8_summaries_div();
+    grade_8_worksheets_div();
 
     graad_8_div();
+    graad_8_opsommings_div();
+    graad_8_werkkaarte_div();
 
     grade_10_div();
 
