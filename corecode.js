@@ -1,6 +1,69 @@
 const body = document.body;
 var lang = "English"
 
+let files = {   "Afrikaans" : {
+                            "Graad8" : {
+                                        "Opsommings" : ["Gr 8 - Kwartaal 1&2 Wiskunde.pdf",
+                                                        "Gr 8 Algebra (1).pdf",
+                                                        "Gr 8 Algebra Bundle Kw 3 (1).pdf",
+                                                        "Gr 8 Breuke Fractions (1) 8.1.5.pdf",
+                                                        "Gr 8 Breuke Fractions (2) 8.1.6 (1).pdf",
+                                                        "Gr 8 Breuke Fractions (2) 8.1.6 (1).pdf",
+                                                        "Gr 8 Breuke Fractions (3) 8.1.7.pdf",
+                                                        "Gr 8 Breuke Fractions (4) 8.1.8.pdf",
+                                                        "Gr 8 Breuke Fractions (5) 8.1.9.pdf",
+                                                        "Gr 8 Eksponente exponents (1) 8.2.1.pdf",
+                                                        "Gr 8 Eksponente exponents (2) 8.2.2.pdf",
+                                                        "Gr 8 Eksponente exponents (3) 8.2.3.pdf",
+                                                        "Gr 8 Eksponente Exponents (4) 8.2.4.pdf",
+                                                        "Gr 8 Eksponente Exponents (5) 8.2.5.pdf",
+                                                        "Gr 8 Finansies Finance (1) 8.1.3 (1).pdf",
+                                                        "Gr 8 Finansies Finance (2) 8.1.4.pdf",
+                                                        "Gr 8 Getalpatrone Nr patterns (1) 8.2.6.pdf",
+                                                        "Gr 8 Koers Rate 8.1.3b.pdf",
+                                                        "Gr 8 Meetkunde 1 2024-07-19 12_58_23 (2).pdf",
+                                                        "Gr 8 Meetkunde 2 Copy (1).pdf",
+                                                        "Gr 8 Omtr Opp Per Area (2)8.3.8 (1).pdf",
+                                                        "Gr 8 Telgetalle Whole nr (2) 8.1.2.pdf",
+                                                        "Gr 8 Telgetalle Whole nrs (2) 8.1.2.pdf",
+                                                        "Gr 8 Verhoudings ratios 8.1.3.pdf",
+                                                        "Gr 8.1.1 Telgetalle Whole numbers (1) (1).pdf",
+                                                        "Gr 8Algebra (2) 8.3.2.pdf",
+                                                        "Note 14 Aug 2023.pdf"]
+                                                    }
+                                                },
+                "English" : {
+                            "Grade8" : {
+                                        "Summaries" : [ "Gr 8 Algebra (1).pdf",
+                                                        "Gr 8 Algebra Bundle Kw 3 (1).pdf",
+                                                        "Gr 8 Breuke Fractions (1) 8.1.5.pdf",
+                                                        "Gr 8 Breuke Fractions (2) 8.1.6 (1).pdf",
+                                                        "Gr 8 Breuke Fractions (2) 8.1.6 (1).pdf",
+                                                        "Gr 8 Breuke Fractions (3) 8.1.7.pdf",
+                                                        "Gr 8 Breuke Fractions (4) 8.1.8.pdf",
+                                                        "Gr 8 Breuke Fractions (5) 8.1.9.pdf",
+                                                        "Gr 8 Eksponente exponents (1) 8.2.1.pdf",
+                                                        "Gr 8 Eksponente exponents (2) 8.2.2.pdf",
+                                                        "Gr 8 Eksponente exponents (3) 8.2.3.pdf",
+                                                        "Gr 8 Eksponente Exponents (4) 8.2.4.pdf",
+                                                        "Gr 8 Eksponente Exponents (5) 8.2.5.pdf",
+                                                        "Gr 8 Finansies Finance (1) 8.1.3 (1).pdf",
+                                                        "Gr 8 Finansies Finance (2) 8.1.4.pdf",
+                                                        "Gr 8 Getalpatrone Nr patterns (1) 8.2.6.pdf",
+                                                        "Gr 8 Koers Rate 8.1.3b.pdf",
+                                                        "Gr 8 Meetkunde 1 2024-07-19 12_58_23 (2).pdf",
+                                                        "Gr 8 Meetkunde 2 Copy (1).pdf",
+                                                        "Gr 8 Omtr Opp Per Area (2)8.3.8 (1).pdf",
+                                                        "Gr 8 Telgetalle Whole nr (2) 8.1.2.pdf",
+                                                        "Gr 8 Telgetalle Whole nrs (2) 8.1.2.pdf",
+                                                        "Gr 8 Verhoudings ratios 8.1.3.pdf",
+                                                        "Gr 8.1.1 Telgetalle Whole numbers (1) (1).pdf",
+                                                        "Gr 8Algebra (2) 8.3.2.pdf",
+                                                        "Note 14 Aug 2023.pdf"]
+                                            }
+                                }
+                };
+
 function header_div(){
     const sitenameheader_div = document.createElement("div");
     sitenameheader_div.id = "siteNameHeaderDivID";
@@ -184,6 +247,10 @@ function grade_8_div(){
     const summaries = document.createElement("a");
     summaries.id = "grade8SummariesID";
     summaries.textContent = "Summaries";
+    summaries.onclick = function(){
+        grade_8_div.style = "display: none";
+        document.getElementById("grade8SummariesDivID").style = "display: block"
+    }
     grade_8_div.append(summaries);
 
     const br3 = document.createElement("br")
@@ -221,6 +288,36 @@ function grade_8_div(){
     grade_8_div.appendChild(back)
 
     body.appendChild(grade_8_div)
+}
+
+// Grade 8 Summaries
+function grade_8_summaries_div(){
+    const div = document.createElement("div")
+    div.id = "grade8SummariesDivID"
+    div.style = "display: none"
+    for (let i = 0; i < files["English"]["Grade8"]["Summaries"].length; i++){
+        if (i > 0){
+            const br = document.createElement("br")
+            div.appendChild(br)
+        }
+        const a = document.createElement("a")
+        a.textContent = files["English"]["Grade8"]["Summaries"][i]
+        a.href = "English/Grade8/Summaries/" + files["English"]["Grade8"]["Summaries"][i]
+        div.appendChild(a)
+    }
+    const br = document.createElement("br");
+    div.appendChild(br)
+    const br2 = document.createElement("br");
+    div.appendChild(br2)
+
+    const back = document.createElement("a")
+    back.textContent = "Back"
+    back.onclick = function() {
+        div.style = "display: none"
+        document.getElementById("grade8DivID").style = "display: block"
+    }
+    div.appendChild(back)
+    body.appendChild(div)
 }
 
 function grade_10_div(){
@@ -436,10 +533,15 @@ function main(){
     language_div();
     main_page_english_div();
     main_page_afrikaans_div();
-    grade_8_div()
-    grade_10_div()
-    graad_8_div()
-    graad_10_div()
+
+    grade_8_div();
+    grade_8_summaries_div();
+
+    graad_8_div();
+
+    grade_10_div();
+
+    graad_10_div();
 }
 
-main()
+main();
