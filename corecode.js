@@ -179,6 +179,7 @@ function main_page_english_div(){
     main_div.appendChild(br1)
 
     const gr10_link = document.createElement("button");
+    gr10_link.disabled = true;
     gr10_link.id = "grade10LinkID";
     gr10_link.textContent ="Grade 10";
     gr10_link.onclick = function(){
@@ -213,6 +214,7 @@ function main_page_afrikaans_div(){
     main_div.appendChild(br1)
 
     const gr10_link = document.createElement("button");
+    gr10_link.disabled = true
     gr10_link.id = "graad10LinkID";
     gr10_link.textContent ="Graad 10";
     gr10_link.onclick = function(){
@@ -238,6 +240,7 @@ function grade_8_div(){
 
     // Lesson Plans
     const lesson_plans = document.createElement("button");
+    lesson_plans.disabled = true
     lesson_plans.id = "grade8LessonPlansID";
     lesson_plans.textContent = "Lesson Plans";
     grade_8_div.appendChild(lesson_plans);
@@ -273,6 +276,7 @@ function grade_8_div(){
 
     // Test Papers
     const test_papers = document.createElement("button");
+    test_papers.disabled = true
     test_papers.id = "grade8TestPapersID";
     test_papers.textContent = "Test Papers";
     grade_8_div.appendChild(test_papers);
@@ -282,6 +286,7 @@ function grade_8_div(){
 
     // Videos
     const videos = document.createElement("button");
+    videos.disabled = true
     videos.id = "grade8Videos";
     videos.textContent = "Videos"
     grade_8_div.appendChild(videos)
@@ -448,6 +453,7 @@ function graad_8_div(){
 
     // Les Planne
     const lesson_plans = document.createElement("button");
+    lesson_plans.disabled = true
     lesson_plans.id = "graad8LesPlanneID";
     lesson_plans.textContent = "Les Planne";
     graad_8_div.appendChild(lesson_plans);
@@ -483,6 +489,7 @@ function graad_8_div(){
 
     // Toetse
     const test_papers = document.createElement("button");
+    test_papers.disabled = true
     test_papers.id = "graad8ToetseID";
     test_papers.textContent = "Toetse";
     graad_8_div.appendChild(test_papers);
@@ -492,6 +499,7 @@ function graad_8_div(){
     
     // Videos
     const videos = document.createElement("button");
+    videos.disabled = true
     videos.id = "graad8Videos";
     videos.textContent = "Videos"
     graad_8_div.appendChild(videos)
