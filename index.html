@@ -10,7 +10,8 @@
             font-family: sans-serif;
             margin: 0;
             padding: 0;
-            height: 100%
+            height: 100%;
+            background-color: #030325;
         }
 
         div{
@@ -23,11 +24,13 @@
         h1{
             font-size: 3em;
             margin-bottom: auto;
+            color: white;
         }
 
         a{
             font-size: 1em;
             text-decoration: none;
+            color: white
         }
 
         form{
@@ -37,6 +40,7 @@
         label{
             margin-bottom: auto;
             padding: auto;
+            color: white;
         }
 
         input{
@@ -52,28 +56,50 @@
         footer{
             text-align: center;
             margin: auto;
+            color: white
         }
 
         .footer1{
-            color: black;
+            color: white;
             margin-top: 0px;
             padding-top: 0px;
             font-size: small;
         }
 
         .footer2{
-            color: black;
+            color: white;
             margin-top: 0px;
             padding-top: 0px;
             font-weight: bolder;
             font-size: larger;
+        }
+
+        #ImageDiv{
+            position: absolute;
+            background-size: cover;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            height: 40em;
+            width: 40em;
+            transform: translate(-50%, -50%);
+            animation: spin 60s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
     </style>
 </head>
 <body>
     <script src="corecode.js"></script>
 </body>
-<footer>
+<footer style="z-index: 2; position: relative;">
     <hr>
     <a class="footer1">Website Sponsored By</a><br>
     <a class="footer2">Ghost Software Productions</a>
